@@ -1,0 +1,15 @@
+---
+-
+  hosts: all
+  name: "Set some values in the test db"
+  become: yes
+  become_method: enable
+  tasks:
+    -
+      community.general.mssql_db:
+        login_host: "10.1.0.8"
+        name: "TESTDB"
+        login_user: "sa"
+        login_password: "POCAdmin12345"
+        state: present
+        autocommit: yes

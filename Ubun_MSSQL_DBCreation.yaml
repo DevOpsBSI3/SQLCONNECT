@@ -11,5 +11,5 @@
         name: "TESTDB"
         login_user: "sa"
         login_password: "POCAdmin12345"
-        state: present
+        state: absent
         autocommit: yes

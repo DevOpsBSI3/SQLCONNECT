@@ -8,8 +8,8 @@
     -
       community.general.mssql_db:
         login_host: "10.1.0.8"
-        name: "TESTDB"
+        name: "TESTNEWDB"
         login_user: "sa"
         login_password: "POCAdmin12345"
-        state: absent
+        state: present
         autocommit: yes

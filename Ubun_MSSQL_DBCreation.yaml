@@ -1,7 +1,7 @@
 ---
 -
   hosts: all
-  name: "Set some values in the test db"
+  name: "create test new db"
   become: yes
   become_method: enable
   tasks:

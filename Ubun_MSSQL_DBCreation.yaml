@@ -1,15 +1,30 @@
 ---
 -
   hosts: all
-  name: "create test new db"
+  name: "Creating a database and user inside it"
   become: yes
   become_method: enable
   tasks:
     -
       community.general.mssql_db:
         login_host: "10.1.0.8"
-        name: "TESTNEWDB"
+        name: "TESTDB"
         login_user: "sa"
         login_password: "POCAdmin12345"
-        state: absent
+        state: present
         autocommit: yes
+      register: description
+    -
+      debug:
+        var: description
+    -
+      community.general.odbc:
+        dsn: "DRIVER={ODBC Driver 17 for SQL Server};Server=10.1.0.8;Database=master;UID=sa;PWD=POCAdmin12345;"
+        query: "CREATE LOGIN [TEST_USER] WITH PASSWORD=N'TEST_USER', DEFAULT_DATABASE=[TESTDB], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF;
+        CREATE USER [TEST_USER] FOR LOGIN [TEST_USER];"
+        commit: true
+      changed_when: no
+      register: results
+    -
+      debug:
+        var: results.results

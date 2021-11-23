@@ -8,7 +8,7 @@
     -
       community.general.mssql_db:
         login_host: "10.1.0.8"
-        name: "TESTDB1"
+        name: "TESTDB"
         login_user: "sa"
         login_password: "POCAdmin12345"
         state: present
@@ -20,7 +20,7 @@
     -
       community.general.odbc:
         dsn: "DRIVER={ODBC Driver 17 for SQL Server};Server=10.1.0.8;Database=master;UID=sa;PWD=POCAdmin12345;"
-        query: "CREATE LOGIN [TEST_USER1] WITH PASSWORD=N'TEST_USER1', DEFAULT_DATABASE=[TESTDB1], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF;
+        query: "CREATE LOGIN [TEST_USER2] WITH PASSWORD=N'TEST_USER1', DEFAULT_DATABASE=[TESTDB], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF;
         CREATE USER [TEST_USER1] FOR LOGIN [TEST_USER1];"
         commit: true
       changed_when: no
